@@ -44,7 +44,7 @@ const downloadChunks = async (params: {[key: string]: string | number}) => {
     });
     for (const article of articles) {
         const url = 'https://www.e-stat.go.jp' + article.downloadUrl;
-        await download(url);
+        await download(url, __dirname + 'dist');
         await sleep(1);
         console.log(`Downloaded ${article.title} (${article.area})`);
     }
