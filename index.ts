@@ -44,7 +44,7 @@ const downloadChunks = async (params: {[key: string]: string | number}) => {
     });
     for (const article of articles) {
         const url = 'https://www.e-stat.go.jp' + article.downloadUrl;
-        await download(url, __dirname + 'dist');
+        await download(url, __dirname + '/dist');
         await sleep(1);
         console.log(`Downloaded ${article.title} (${article.area})`);
     }
@@ -68,7 +68,7 @@ const main = async () => {
     };
     let page = 1;
     let articlesCount = 999;
-    while (page * 20 < articlesCount) {
+    while ((page - 1) * 20 < articlesCount) {
         const { hitNumber } = await downloadChunks({
             ...params,
             page,
